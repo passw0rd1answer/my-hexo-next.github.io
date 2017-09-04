@@ -12,6 +12,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function(){
+        if(''){
+            if (prompt('想看吗，想的话那就输入密码吧') !== ''){
+                alert('可是，你输入的密码错误啊');
+                history.back();
+            }
+        }
+    })();
+</script>
 <meta name="theme-color" content="#222">
 
 
@@ -88,7 +98,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="随笔," />
 
 
 
@@ -105,13 +115,14 @@
 
 
 <meta name="description" content="博客终于要落定了 说容易也不是很容易，说难也不是很难，可是也要了这么多时候，毕竟，这些时间都是要抽出来的。 也挺坎坷的，一开始用的是Jekyll，但是我发现，Jekyll加载真的是慢，大概是Ruby生成页面的原因。我刚才搭建的时候，就几篇测试用的文档，感觉也能加载到老。 Hexo不得不说真的比Jekyll快太多了=、= 接下来呢，慢慢规划，慢慢写吧，之前的Jekyll写的博文，到这边老是404，">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="到今天，博客基本施工完成了吧">
 <meta property="og:url" content="http://r00tshe11.club/2017/09/04/到今天，博客基本施工完成了吧/index.html">
 <meta property="og:site_name" content="r00t she11">
 <meta property="og:description" content="博客终于要落定了 说容易也不是很容易，说难也不是很难，可是也要了这么多时候，毕竟，这些时间都是要抽出来的。 也挺坎坷的，一开始用的是Jekyll，但是我发现，Jekyll加载真的是慢，大概是Ruby生成页面的原因。我刚才搭建的时候，就几篇测试用的文档，感觉也能加载到老。 Hexo不得不说真的比Jekyll快太多了=、= 接下来呢，慢慢规划，慢慢写吧，之前的Jekyll写的博文，到这边老是404，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-04T13:16:04.167Z">
+<meta property="og:updated_time" content="2017-09-04T14:08:14.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="到今天，博客基本施工完成了吧">
 <meta name="twitter:description" content="博客终于要落定了 说容易也不是很容易，说难也不是很难，可是也要了这么多时候，毕竟，这些时间都是要抽出来的。 也挺坎坷的，一开始用的是Jekyll，但是我发现，Jekyll加载真的是慢，大概是Ruby生成页面的原因。我刚才搭建的时候，就几篇测试用的文档，感觉也能加载到老。 Hexo不得不说真的比Jekyll快太多了=、= 接下来呢，慢慢规划，慢慢写吧，之前的Jekyll写的博文，到这边老是404，">
@@ -358,6 +369,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -450,11 +483,33 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/随笔/" rel="tag"><i class="fa fa-tag"></i> 随笔</a>
+          
+        </div>
+      
 
       
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/04/test-password/" rel="prev" title="基本也是想她。">
+                基本也是想她。 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -527,14 +582,32 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
@@ -615,7 +688,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共214字</span>
+  <span class="post-count">博客全站共250字</span>
 </div>
         
 
