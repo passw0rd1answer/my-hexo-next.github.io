@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="关于life的一些疑问 新建普通单据中的工作流的应用场景是什么？ 伪实体、虚实体的应用场景？两者之间的区别是？ 数据隔离？ 弱实体是什么？如何定义？    life遇到的一些问题 发布单据报错：  ERROR_CODE: meta.error.name_prefix_is_invalid   名称 ‘platform.demo.res.table.T_DEMO_CSB’ 的前缀不符合要求，必须是">
+<meta name="description" content="关于life的一些疑问 新建普通单据中的工作流的应用场景是什么？ 伪实体、虚实体的应用场景？两者之间的区别是？ 数据隔离？ 弱实体是什么？如何定义？    life遇到的一些问题  发布单据报错：  ERROR_CODE: meta.error.name_prefix_is_invalid  名称 &amp;apos;platform.demo.res.table.T_DEMO_CSB&amp;apos; 的前缀">
 <meta name="keywords" content="life">
 <meta property="og:type" content="article">
 <meta property="og:title" content="life平台学习笔记">
 <meta property="og:url" content="http://r00tshe11.club/2017/09/05/life-note/index.html">
 <meta property="og:site_name" content="r00t she11">
-<meta property="og:description" content="关于life的一些疑问 新建普通单据中的工作流的应用场景是什么？ 伪实体、虚实体的应用场景？两者之间的区别是？ 数据隔离？ 弱实体是什么？如何定义？    life遇到的一些问题 发布单据报错：  ERROR_CODE: meta.error.name_prefix_is_invalid   名称 ‘platform.demo.res.table.T_DEMO_CSB’ 的前缀不符合要求，必须是">
+<meta property="og:description" content="关于life的一些疑问 新建普通单据中的工作流的应用场景是什么？ 伪实体、虚实体的应用场景？两者之间的区别是？ 数据隔离？ 弱实体是什么？如何定义？    life遇到的一些问题  发布单据报错：  ERROR_CODE: meta.error.name_prefix_is_invalid  名称 &amp;apos;platform.demo.res.table.T_DEMO_CSB&amp;apos; 的前缀">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-05T04:23:57.070Z">
+<meta property="og:updated_time" content="2017-09-05T04:31:10.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="life平台学习笔记">
-<meta name="twitter:description" content="关于life的一些疑问 新建普通单据中的工作流的应用场景是什么？ 伪实体、虚实体的应用场景？两者之间的区别是？ 数据隔离？ 弱实体是什么？如何定义？    life遇到的一些问题 发布单据报错：  ERROR_CODE: meta.error.name_prefix_is_invalid   名称 ‘platform.demo.res.table.T_DEMO_CSB’ 的前缀不符合要求，必须是">
+<meta name="twitter:description" content="关于life的一些疑问 新建普通单据中的工作流的应用场景是什么？ 伪实体、虚实体的应用场景？两者之间的区别是？ 数据隔离？ 弱实体是什么？如何定义？    life遇到的一些问题  发布单据报错：  ERROR_CODE: meta.error.name_prefix_is_invalid  名称 &amp;apos;platform.demo.res.table.T_DEMO_CSB&amp;apos; 的前缀">
 
 
 
@@ -456,12 +456,13 @@
 <li><strong>弱实体是什么？如何定义？ </strong></li>
 </ul>
 <hr>
-<h1 id="life遇到的一些问题"><a href="#life遇到的一些问题" class="headerlink" title="life遇到的一些问题"></a>life遇到的一些问题</h1><ul>
-<li><p><strong>发布单据报错：</strong><br>  ERROR_CODE: meta.error.name_prefix_is_invalid</p>
-<p>  名称 ‘platform.demo.res.table.T_DEMO_CSB’ 的前缀不符合要求，必须是 ‘com.company.product.’！</p>
-</li>
-</ul>
-<p><strong>解决：</strong></p>
+<h1 id="life遇到的一些问题"><a href="#life遇到的一些问题" class="headerlink" title="life遇到的一些问题"></a>life遇到的一些问题</h1><blockquote>
+<p><strong> 发布单据报错：</strong></p>
+</blockquote>
+<pre><code>ERROR_CODE: meta.error.name_prefix_is_invalid
+
+名称 &apos;platform.demo.res.table.T_DEMO_CSB&apos; 的前缀不符合要求，必须是 &apos;com.company.product.&apos;！
+</code></pre><p><strong>解决：</strong></p>
 <ol>
 <li><p>查看全部元数据，搜索“前缀”，获得前缀信息。<br>名称为：<code>meta.param.NAME_PREFIX</code></p>
 </li>
