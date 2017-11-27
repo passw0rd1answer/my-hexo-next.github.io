@@ -34,10 +34,17 @@
     <entry>
       <title><![CDATA[EAS-BOS学习笔记]]></title>
       <url>/2017/09/11/eas-bos/</url>
-      <content type="html"><![CDATA[<ul>
+      <content type="html"><![CDATA[<excerpt in="" index="" |="" 首页摘要=""> 
+
+<ul>
 <li><h2 id="点击启动服务器没有没有界面出现"><a href="#点击启动服务器没有没有界面出现" class="headerlink" title="点击启动服务器没有没有界面出现"></a>点击启动服务器没有没有界面出现</h2></li>
 </ul>
 <p>检查方案里面的路径和使用的套帐连接问题，之后去runtime目录下检查server.xml是不是为空</p>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+
 <hr>
 <ul>
 <li><h2 id="审核和反审核按钮不可操作"><a href="#审核和反审核按钮不可操作" class="headerlink" title="审核和反审核按钮不可操作"></a>审核和反审核按钮不可操作</h2></li>
@@ -131,7 +138,7 @@ refreshList();
 <p>在onLoad（）方法写</p>
 <p><code>xxx_detailPanel.setVisible(false);</code></p>
 <hr>
-]]></content>
+</the></excerpt>]]></content>
       
         <categories>
             
@@ -180,14 +187,19 @@ refreshList();
     <entry>
       <title><![CDATA[需要思考的思考]]></title>
       <url>/2017/09/06/2017-09-06/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>+<a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
+      <content type="html"><![CDATA[<excerpt in="" index="" |="" 首页摘要=""> 
+
 
 <blockquote>
 <p><strong>不知道突然怎么了，感觉脑子有点空。</strong></p>
 <p><strong>本来今天想好了一个小故事，但也突然忘了。</strong></p>
 <p><strong>现在是晚上8点了，没吃晚上，又不知道要干嘛了。</strong></p>
 </blockquote>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+
 <p>突然思绪陷入虚无，该做如何思考？</p>
 <ul>
 <li><h2 id="问题前提思考"><a href="#问题前提思考" class="headerlink" title="问题前提思考"></a>问题前提思考</h2><h4 id="问题的始因（造成）"><a href="#问题的始因（造成）" class="headerlink" title="问题的始因（造成）"></a>问题的始因（造成）</h4></li>
@@ -212,7 +224,7 @@ refreshList();
 <hr>
 <p><strong>另外：口腔溃疡好难受啊，可怕</strong></p>
 <hr>
-</the>]]></content>
+</the></excerpt>]]></content>
       
         <categories>
             
