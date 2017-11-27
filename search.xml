@@ -5,14 +5,15 @@
     <entry>
       <title><![CDATA[今天咸鱼了]]></title>
       <url>/2017/11/08/2017-11-08/</url>
-      <content type="html"><![CDATA[<contents>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>+<a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
 
 
 <p>噗，好久没更新博客了，有点水哦。</p>
 <p>主要还是因为工作比较忙的原因，有很多情况下，连我自己都没怎么看了，尴尬。</p>
 <p>还有就是打算再换个样式了，这个布局有点不喜欢了，但是这样会不会很麻烦。</p>
 <p>反正今天也就这么咸鱼了，撸起袖子，干！</p>
-</contents>]]></content>
+</the>]]></content>
       
         <categories>
             
@@ -178,7 +179,8 @@ refreshList();
     <entry>
       <title><![CDATA[需要思考的思考]]></title>
       <url>/2017/09/06/2017-09-06/</url>
-      <content type="html"><![CDATA[<contents>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>+<a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
 
 <blockquote>
 <p><strong>不知道突然怎么了，感觉脑子有点空。</strong></p>
@@ -209,7 +211,7 @@ refreshList();
 <hr>
 <p><strong>另外：口腔溃疡好难受啊，可怕</strong></p>
 <hr>
-</contents>]]></content>
+</the>]]></content>
       
         <categories>
             
