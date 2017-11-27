@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[今天咸鱼了]]></title>
+      <url>/2017/11/08/2017-11-08/</url>
+      <content type="html"><![CDATA[<contents>
+
+
+<p>噗，好久没更新博客了，有点水哦。</p>
+<p>主要还是因为工作比较忙的原因，有很多情况下，连我自己都没怎么看了，尴尬。</p>
+<p>还有就是打算再换个样式了，这个布局有点不喜欢了，但是这样会不会很麻烦。</p>
+<p>反正今天也就这么咸鱼了，撸起袖子，干！</p>
+</contents>]]></content>
+      
+        <categories>
+            
+            <category> 随想 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 静。 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[EAS-BOS学习笔记]]></title>
+      <url>/2017/09/11/eas-bos/</url>
+      <content type="html"><![CDATA[<ul>
+<li><h2 id="点击启动服务器没有没有界面出现"><a href="#点击启动服务器没有没有界面出现" class="headerlink" title="点击启动服务器没有没有界面出现"></a>点击启动服务器没有没有界面出现</h2></li>
+</ul>
+<p>检查方案里面的路径和使用的套帐连接问题，之后去runtime目录下检查server.xml是不是为空</p>
+<hr>
+<ul>
+<li><h2 id="审核和反审核按钮不可操作"><a href="#审核和反审核按钮不可操作" class="headerlink" title="审核和反审核按钮不可操作"></a>审核和反审核按钮不可操作</h2></li>
+</ul>
+<h5 id="将审核和反审核按钮的Enabled和Viable的属性设置为true"><a href="#将审核和反审核按钮的Enabled和Viable的属性设置为true" class="headerlink" title="将审核和反审核按钮的Enabled和Viable的属性设置为true"></a>将审核和反审核按钮的Enabled和Viable的属性设置为true</h5><h5 id="然后重写onLoad（）方法，分别将this-actionAudit和actionUnAudit的setEnabled和setViable的属性设置为false"><a href="#然后重写onLoad（）方法，分别将this-actionAudit和actionUnAudit的setEnabled和setViable的属性设置为false" class="headerlink" title="然后重写onLoad（）方法，分别将this.actionAudit和actionUnAudit的setEnabled和setViable的属性设置为false**"></a>然后重写onLoad（）方法，分别将this.actionAudit和actionUnAudit的setEnabled和setViable的属性设置为false**</h5><hr>
+<ul>
+<li><h3 id="反审核要自动刷新，而不是手动刷新"><a href="#反审核要自动刷新，而不是手动刷新" class="headerlink" title="反审核要自动刷新，而不是手动刷新"></a>反审核要自动刷新，而不是手动刷新</h3></li>
+</ul>
+<p><code>refreshList();</code></p>
+<hr>
+<ul>
+<li><h3 id="录入表界面删除还能删除审核的单据问题"><a href="#录入表界面删除还能删除审核的单据问题" class="headerlink" title="录入表界面删除还能删除审核的单据问题"></a>录入表界面删除还能删除审核的单据问题</h3></li>
+</ul>
+<p><code>actionRemove_actionPerformed</code>逻辑编辑</p>
+<hr>
+<ul>
+<li><h3 id="未审核的单据也能生成凭据的问题"><a href="#未审核的单据也能生成凭据的问题" class="headerlink" title="未审核的单据也能生成凭据的问题"></a>未审核的单据也能生成凭据的问题</h3></li>
+</ul>
+<pre><code>checkSelected();
+String[] billId = SCMClientUtils.getSelectRowFieldValue(this.tblMain,         getKeyFieldName());
+IRevenueTotal2 order = RevenueTotal2Factory.getRemoteInstance();
+for (int i = 0; i &lt; billId.length; i++) {
+    SelectorItemCollection sel = new SelectorItemCollection();
+    sel.add(new SelectorItemInfo(&quot;id&quot;));
+    sel.add(new SelectorItemInfo(&quot;billState&quot;));
+    sel.add(new SelectorItemInfo(&quot;auditor&quot;));
+    RevenueTotal2Info info=null;
+    try {
+        info = order.getRevenueTotal2Info(new ObjectUuidPK(billId[i]), sel);
+        if (info.getBillState().getValue().equals(&quot;audit&quot;)) {
+            super.actionVoucher_actionPerformed(e);
+            order.updatePartial(info, sel);
+
+        }else{
+            MsgBox.showWarning(&quot;单据未审核，不能生成凭证&quot;);
+            return;
+        }
+    } catch (EASBizException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+    }
+}
+refreshList();
+</code></pre><hr>
+<ul>
+<li><h3 id="过滤规则"><a href="#过滤规则" class="headerlink" title="过滤规则"></a>过滤规则</h3></li>
+</ul>
+<p><code>private void registerWarehouseF7(KDTable table, String colNameStorageOrgUnit, String colNameWarehouse, String colNameMaterial)</code><br>  {</p>
+<p>​        …    …    …</p>
+<p><code>}</code></p>
+<hr>
+<ul>
+<li><h3 id="点击生成凭证会变成是否删除"><a href="#点击生成凭证会变成是否删除" class="headerlink" title="点击生成凭证会变成是否删除"></a>点击生成凭证会变成是否删除</h3></li>
+</ul>
+<p><code>super.actionRemove_actionPerformed(e);</code></p>
+<hr>
+<ul>
+<li><h3 id="打开序时簿空指针异常"><a href="#打开序时簿空指针异常" class="headerlink" title="打开序时簿空指针异常"></a>打开序时簿空指针异常</h3></li>
+</ul>
+<p>重写：</p>
+<pre><code>protected ICoreBase getBizInterface() throws Exception {
+    return InventoryrecordsFactory.getRemoteInstance();
+ }
+</code></pre><hr>
+<ul>
+<li><h3 id="生成凭证规则问题"><a href="#生成凭证规则问题" class="headerlink" title="生成凭证规则问题"></a>生成凭证规则问题</h3></li>
+</ul>
+<p>信息提示：</p>
+<p><code>不能获得原币到本位币汇率.原币:NULL.本位币.人民币</code></p>
+<p> 错误原因：</p>
+<p><code>规则未配置正确</code></p>
+<hr>
+<ul>
+<li><h3 id="从客户端进入数据库"><a href="#从客户端进入数据库" class="headerlink" title="从客户端进入数据库"></a>从客户端进入数据库</h3></li>
+</ul>
+<p><code>搜索币別（如果有两个那就是短的那个），按Ctrl+Shift+Q键，然后输入管理员密码</code></p>
+<hr>
+<ul>
+<li><h3 id="精度问题配置"><a href="#精度问题配置" class="headerlink" title="精度问题配置"></a>精度问题配置</h3></li>
+</ul>
+<p><code>除了数据类型，精度问题可以直接在EAS系统里面配置，不用修改源数据内容。</code></p>
+<hr>
+<ul>
+<li><h3 id="单据合计行添加"><a href="#单据合计行添加" class="headerlink" title="单据合计行添加"></a>单据合计行添加</h3></li>
+</ul>
+<p><code>在包路径下新建扩展类，继承对应的UI，然后通过Java代码实现</code></p>
+<hr>
+<ul>
+<li><h3 id="隐藏界面上无用的分录操作按钮"><a href="#隐藏界面上无用的分录操作按钮" class="headerlink" title="隐藏界面上无用的分录操作按钮"></a>隐藏界面上无用的分录操作按钮</h3></li>
+</ul>
+<p>在onLoad（）方法写</p>
+<p><code>xxx_detailPanel.setVisible(false);</code></p>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习笔记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> EAS-BOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[预见风雨]]></title>
+      <url>/2017/09/07/wind-and-sapling/</url>
+      <content type="html"><![CDATA[<p>​    今天的风雨较大，吹飞了一朵开了两个月的花。也让我为之震惊。</p>
+<p>花儿飘忽不定吗，柔弱的枝干只能随风摇摆？</p>
+<p>​    一个月前，种下了一颗小树苗，我告诉它，三个月后有场暴风雨，我没告诉它风雨到底有多大。但今天倒是要遇见了。</p>
+<p>​    小花朵和小树苗一样吗？花，开放之时，就可以随着微风、蜜蜂，尘埃落定。那时是它最美的时候了吧。因为之后，就开始结果了，凋零了。</p>
+<p>​    小树苗，之后会长成一颗大树，无法说清的枝蔓长向，叶儿渐长，为树底下那一片天地荫蔽：狂风与烈日。也会开花，也会结果，不过那是茁壮成长之后。</p>
+<p>​    正如今天，它与我在安定内看到了疯狂暴雨，我想它也触目惊心。</p>
+<p>​    我告诉它，别害怕，花儿随风摇摆，那是它是花儿选择的风。而你抓住的，不是风，是脚下的一片土地，将来你荫蔽的那片土地，不受风雨，不受烈日，开花结果的土地。</p>
+<blockquote>
+<h2 id="“嗯，那时候有海燕吗”"><a href="#“嗯，那时候有海燕吗”" class="headerlink" title="“嗯，那时候有海燕吗”"></a>“嗯，那时候有海燕吗”</h2></blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 小记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 约定 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[需要思考的思考]]></title>
+      <url>/2017/09/06/2017-09-06/</url>
+      <content type="html"><![CDATA[<contents>
+
+<blockquote>
+<p><strong>不知道突然怎么了，感觉脑子有点空。</strong></p>
+<p><strong>本来今天想好了一个小故事，但也突然忘了。</strong></p>
+<p><strong>现在是晚上8点了，没吃晚上，又不知道要干嘛了。</strong></p>
+</blockquote>
+<p>突然思绪陷入虚无，该做如何思考？</p>
+<ul>
+<li><h2 id="问题前提思考"><a href="#问题前提思考" class="headerlink" title="问题前提思考"></a>问题前提思考</h2><h4 id="问题的始因（造成）"><a href="#问题的始因（造成）" class="headerlink" title="问题的始因（造成）"></a>问题的始因（造成）</h4></li>
+</ul>
+<blockquote>
+<p>   ​首先，是没有一个明确的目标。</p>
+</blockquote>
+<p>对比平时有什么不同呢？是因为下午之后，闲时太多了，目标不明确。</p>
+<p>所以这是要反思的点，为何会目标不明确？</p>
+<blockquote>
+<p>​    其次，是因为注意力分散了，和上述是有连带关系的。</p>
+</blockquote>
+<p>为什么分散了注意力呢？</p>
+<p><code>因为李婷有毒。</code></p>
+<ul>
+<li><h2 id="解决的方案"><a href="#解决的方案" class="headerlink" title="解决的方案"></a>解决的方案</h2><p> 回去吃个饭，洗个澡，给大脑放下假。</p>
+<p> 耳机也少带吧，保护一下听力。</p>
+<p> 明天再规划落实下目标。</p>
+<p> 加油。</p>
+</li>
+</ul>
+<hr>
+<p><strong>另外：口腔溃疡好难受啊，可怕</strong></p>
+<hr>
+</contents>]]></content>
+      
+        <categories>
+            
+            <category> 师 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 蒙。 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[将军此番征战，何时归来？]]></title>
+      <url>/2017/09/05/%E8%8B%B1%E9%9B%84%E7%A6%BB%E5%88%AB%E4%B9%8B%E6%AD%8C/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>月光皎洁，夜色弄人，将军何故身披甲胄。</p>
+</blockquote>
+<pre><code>战乱蜂起，君令吾前去出征。
+</code></pre><blockquote>
+<p>天下久安大乱，将军此番离去，妾恐不能安。</p>
+</blockquote>
+<pre><code>君有命，开国承家,在师中吉，承天宠也。王三锡命，怀万邦也。
+</code></pre><blockquote>
+<p>将军。</p>
+</blockquote>
+<pre><code>又何也。
+</code></pre><blockquote>
+<p>将军此番征战，何时归来？</p>
+</blockquote>
+<pre><code>恐不归来。
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 随想 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 物。 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[life平台学习笔记]]></title>
+      <url>/2017/09/05/life-note/</url>
+      <content type="html"><![CDATA[<h1 id="关于life的一些疑问"><a href="#关于life的一些疑问" class="headerlink" title="关于life的一些疑问"></a>关于life的一些疑问</h1><ul>
+<li><strong>新建普通单据中的工作流的应用场景是什么？</strong></li>
+<li><strong>伪实体、虚实体的应用场景？两者之间的区别是？</strong></li>
+<li><strong>数据隔离？</strong></li>
+<li><strong>弱实体是什么？如何定义？ </strong></li>
+</ul>
+<hr>
+<h1 id="life遇到的一些问题"><a href="#life遇到的一些问题" class="headerlink" title="life遇到的一些问题"></a>life遇到的一些问题</h1><blockquote>
+<p><strong> 发布单据报错：</strong></p>
+</blockquote>
+<pre><code>ERROR_CODE: meta.error.name_prefix_is_invalid
+
+名称 &apos;platform.demo.res.table.T_DEMO_CSB&apos; 的前缀不符合要求，必须是 &apos;com.company.product.&apos;！
+</code></pre><p><strong>解决：</strong></p>
+<ol>
+<li><p>查看全部元数据，搜索“前缀”，获得前缀信息。<br>名称为：<code>meta.param.NAME_PREFIX</code></p>
+</li>
+<li><p>以获取的前缀名新建子系统。（？前缀只能用这个吗）</p>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习笔记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> life </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[到今天，博客基本施工完成了吧]]></title>
+      <url>/2017/09/04/%E5%88%B0%E4%BB%8A%E5%A4%A9%EF%BC%8C%E5%8D%9A%E5%AE%A2%E5%9F%BA%E6%9C%AC%E6%96%BD%E5%B7%A5%E5%AE%8C%E6%88%90%E4%BA%86%E5%90%A7/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>+<a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文="">s</the></p>
+<blockquote>
+<h1 id="博客终于要落定了"><a href="#博客终于要落定了" class="headerlink" title="博客终于要落定了"></a>博客终于要落定了</h1></blockquote>
+<p>说容易也不是很容易，说难也不是很难，可是也要了这么多时间，毕竟，这些时间都是要抽出来的。</p>
+<p>也挺坎坷的，一开始用的是Jekyll，但是我发现，Jekyll加载真的是慢，大概是Ruby生成页面的原因。我刚才搭建的时候，就几篇测试用的文档，感觉也能加载到老。</p>
+<p>Hexo不得不说真的比Jekyll快太多了=、=</p>
+<p>接下来呢，慢慢规划，慢慢写吧，之前的Jekyll写的博文，到这边老是404，挺烦的，有空再想办法解决吧。</p>
+<p>还有就是，在我的交际圈，真的是没什么人会去看博客，可怕。</p>
+<p>不管了，慢慢写，总之 </p>
+<h3 id="这片是我的天地，我写我自己的心情，我想说的，我想写的"><a href="#这片是我的天地，我写我自己的心情，我想说的，我想写的" class="headerlink" title="这片是我的天地，我写我自己的心情，我想说的，我想写的"></a>这片是我的天地，我写我自己的心情，我想说的，我想写的</h3><p>加油。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[加班随便扯点]]></title>
+      <url>/2017/08/21/old-jekyll/</url>
+      <content type="html"><![CDATA[<h2 id="2017年8月21日-21-32-05-高新园"><a href="#2017年8月21日-21-32-05-高新园" class="headerlink" title="2017年8月21日 21:32:05 高新园"></a>2017年8月21日 21:32:05 高新园</h2><p>就一个静态的博客，也弄了好久啊，其实，白天也没有什么时间，也只能晚上没那么紧凑的时候折腾一下</p>
+<p>下载了好多好看的字体，但是我还没时间弄好，说到底是CSS其实我很薄弱。</p>
+<p>而且，这个东西并没有想象中的那么简单，也是有很多语法的，比如Jekyll、Liquid、Markdown等等。。。</p>
+<p>此外还有git、github。。。</p>
+<p>但是，生活，只有折腾才有趣呀，也会抽时间把CSS那块做好，加油！</p>
+<p>PS.写到这里的时候，公司就剩我一个人了</p>
+<p>   可怕=、=</p>
+<p><img src="/images/blog/IMG_20170821_214045_opt.jpg" alt="img"></p>
+<p>高新园确实是个神奇的地方，这里的晚上，灯火璀璨</p>
+<p><img src="/images/blog/IMG_20170806_193545_opt.jpg" alt="img"></p>
+<p>时间不早了，明天还要上班呢，溜了溜了</p>
+<hr>
+<ul>
+<li><strong>突然发现，vscode真的是个神奇的ide,起码git push相当的方便，牛逼！</strong></li>
+</ul>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 高新园随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+</search>
